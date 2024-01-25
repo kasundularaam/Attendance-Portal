@@ -19,7 +19,8 @@ function validateEmail(email) {
     /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   if (re.test(email)) {
     if (
-      email.indexOf("@sltc.ac.lk", email.length - "@sltc.ac.lk".length) !== -1
+      // email.indexOf("@sltc.ac.lk", email.length - "@sltc.ac.lk".length) !== -1
+      email.indexOf("@gmail.com", email.length - "@gmail.com".length) !== -1
     ) {
       return 1;
     }
@@ -77,9 +78,9 @@ passport.use(
       } else if (!validateEmail(email)) {
         messages.push("Email Domain: @sltc.sc.lk required");
         return done(null, false, req.flash("error", messages));
-      } else if (validatePassword(password).length != 0) {
-        messages = validatePassword(password);
-        return done(null, false, req.flash("error", messages));
+        // } else if (validatePassword(password).length != 0) {
+        //   messages = validatePassword(password);
+        //   return done(null, false, req.flash("error", messages));
       } else if (!teacher && !student) {
         messages.push("Please check the tickbox");
         return done(null, false, req.flash("error", messages));
